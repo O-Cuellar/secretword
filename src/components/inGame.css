@@ -1,0 +1,38 @@
+.tip{
+    color: yellow;
+}
+
+.wordContainer{
+    margin: 1.5em;
+    padding: 1.5em;
+    display: flex;
+    border: 20px solid yellow;
+}
+
+.letter, .blankSquare{
+    font-size: 70px;
+    font-weight: bold;
+    line-height: 1.5em;
+    color: black;
+    text-transform: uppercase;
+    border: 3px solid black;
+    height: 100px;
+    width: 100px;
+    background-color: white;
+}
+
+.letterContainer form{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.letterContainer input{
+    height: 90px;
+    width: 90px;
+    font-size: 1.5em;
+    text-align: center;
+    margin-right: 1em;
+    margin-top: 1.5em;
+    text-transform: uppercase;
+}

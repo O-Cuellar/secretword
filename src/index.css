@@ -1,0 +1,30 @@
+html{
+    height: 100%;
+}
+
+body{
+    display: flex;
+    color: white;
+    align-items: center;
+    justify-content: center;
+    font-family: Helvetica;
+    padding: 0;
+    background: linear-gradient(180deg, blue 0%, black 100%);
+}
+
+button{
+    font-size: 2em;
+    color: white;
+    background-color: blue;
+    border: 2px solid red;
+    padding: 0px 90px;
+    border-radius: 80px;
+    cursor: pointer;
+    margin-top: 40px;
+    height: 100px;
+    transition: .3s;
+}
+
+button:hover{
+    background-color: green;
+}
