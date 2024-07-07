@@ -1,9 +1,17 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import './inGame.css'
 
 
-const InGame = ( { Over, pickedWord, pickedCategory, letters, wrongLetters, guesses, points, guessedLetters } ) => {
+const InGame = ( { pickedWord, pickedCategory, letters, wrongLetters, guesses, points, guessedLetters, verifyLetter } ) => {
   const [letter, setLetter] = useState("");
+  const letterInputRef = useRef(null);
+
+  const handleSubmit = (e) =>{
+    e.preventDefault();
+    letterInputRef.current.focus();
+    verifyLetter(letter);
+    setLetter('');
+  }
 
   return (
     <div className="game">
@@ -23,15 +31,22 @@ const InGame = ( { Over, pickedWord, pickedCategory, letters, wrongLetters, gues
       <div className="letterContainer">
         <p>Tente adivinhar uma letra da palavra:</p>
         <p>Você ainda tem {guesses} tentativas</p>
-        <form>
-          <input type="text" name="letter" maxLength={1} required />
+        <form onSubmit={handleSubmit}>
+          <input
+          type="text"
+          name="letter"
+          maxLength={1}
+          value={letter}
+          required
+          ref={letterInputRef}
+          onChange={(e) => setLetter(e.target.value)}/>
           <button>Jogar!</button>
         </form>
       </div>
       <div className="wrongLettters">
         <p>Letras já utlizadas: </p>
         <span>
-          {wrongLetters}
+          {wrongLetters.join(', ')}
         </span>
       </div>
     </div>
