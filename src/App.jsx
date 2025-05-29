@@ -39,30 +39,28 @@ function App() {
   };
 
   const verifyLetter = (letter) => {
-    //normalize the letter
     const LowerCaseLetter = letter.toLowerCase();
-    //check if letter is already been utized
+
     if (
       guessedLetters.includes(LowerCaseLetter) ||
       wrongLetters.includes(LowerCaseLetter)
     ) {
       return;
     }
-    //verify wrong or guess letter
+
     if (letters.includes(LowerCaseLetter)) {
       setGuessedLetters((actualGuessedLetters) => [
         ...actualGuessedLetters,
         LowerCaseLetter,
       ]);
+      setPoints((actualPoints) => actualPoints + 10); // 10 pontos por letra certa
     } else {
       setWrongLetters((actualWrongLetters) => [
         ...actualWrongLetters,
         LowerCaseLetter,
-        setGuesses((actualGuesses) => actualGuesses - 1),
       ]);
+      setGuesses((actualGuesses) => actualGuesses - 1);
     }
-    console.log(guessedLetters);
-    console.log(wrongLetters);
   };
 
   const ClearStates = () => {
@@ -72,22 +70,26 @@ function App() {
   };
 
   useEffect(() => {
-    const uniqueLetters = [...new Set(letters)];
-    if (guessedLetters.length === uniqueLetters.length) {
-      // add score
-      setPoints((actualPoints) => actualPoints + 100);
-
-      // restart game with new word
-      startGame();
-    }
-  }, [guessedLetters, letters]);
-
-  useEffect(() => {
     if (guesses <= 0) {
       setGameStage(stages[2].name);
       ClearStates();
     }
   }, [guesses]);
+
+  useEffect(() => {
+    if (!isPlaying) {
+      return;
+    }
+
+    const uniqueLetters = [...new Set(letters)];
+
+    if (
+      uniqueLetters.length > 0 &&
+      guessedLetters.length === uniqueLetters.length
+    ) {
+      startGame();
+    }
+  }, [guessedLetters, letters]);
 
   const startGame = useCallback(() => {
     ClearStates();
@@ -99,11 +101,16 @@ function App() {
     setPickedWord(word);
     setLetters(letters);
     setGameStage(stages[1].name);
+    setIsPlaying(true);
   });
+
   const restart = () => {
     setGameStage(stages[0].name);
     setPoints(0);
+    setIsPlaying(false);
   };
+
+  const [isPlaying, setIsPlaying] = useState(false);
 
   return (
     <>
