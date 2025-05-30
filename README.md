@@ -1,21 +1,36 @@
-🎮 Secret Word
+# Secret Word 🎮
 
-A word-guessing mini-game, inspired by the classic Silvio Santos show! Developed with Vite + React for a fast and fun experience.
+Um mini-jogo de adivinhação de palavras, inspirado no clássico programa do Silvio Santos! Desenvolvido com Vite + React para uma experiência rápida e divertida.
 
-🧩 Features
+## Link para jogar
 
-✅ Guess the secret word, letter by letter
-✅ Track your hits and misses
-✅ Simple scoring system
-✅ Lightweight and responsive interface
+https://o-cuellar.github.io/secretword/
 
-🚀 Technologies Used
+## Como jogar
 
-    React
+- Tente adivinhar a palavra secreta, letra por letra.  
+- Você tem 3 tentativas para acertar.  
+- Acompanhe seus acertos e erros na tela.  
+- Sua pontuação aumenta conforme acerta letras.
 
-    Vite
+## Como rodar localmente
 
-    JavaScript (ES6+)
+1. Clone o repositório  
+2. Instale as dependências com npm install  
+3. Rode o projeto com npm run dev  
+4. Acesse http://localhost:3000 no seu navegador
 
-    CSS Modules
+## Tecnologias usadas
 
+- React  
+- Vite  
+- JavaScript (ES6+)  
+- CSS Modules  
+
+## Demo
+
+![Demo do Secret Word](src/assets/demo-secret-word.png)
+
+## Licença
+
+MIT License
